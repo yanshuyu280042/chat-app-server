@@ -227,3 +227,55 @@ cat ~/.ssh/id_ed25519.pub
 ssh -T git@github.com
 git push -u origin main --force
 exit
+.github/workflows/deploy.yml
+mkdir -p .github/workflows
+nano .github/workflows/deploy.yml
+git add .github/workflows/deploy.yml
+git commit -m "Add GitHub Actions for EC2 auto deploy"
+git push origin main
+git pull --rebase origin main
+git push origin main
+git add .
+git commit -m "Save current changes before rebase"
+git pull --rebase origin main
+git push origin main
+chmod 600 ~/.ssh/id_ed25519
+git push origin main
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch .ssh/id_ed25519" --prune-empty --tag-name-filter cat -- --all
+git push origin --force --all
+git remote set-url origin https://github.com/yanshuyu280042/chat-app-server.git
+git push --force --all
+git credential-cache exit
+git credential reject
+git push --force --all
+cat mykey.pem
+echo "# trigger deploy" >> README.md
+git add README.md
+git commit -m "Trigger deploy after adding secrets"
+git push origin main
+echo "# deploy retry" >> README.md
+git add README.md
+git commit -m "Retry deploy"
+git push origin main
+ nano .github/workflows/deploy.yml
+nano .github/workflows/deploy.yml
+git add .github/workflows/deploy.yml
+git commit -m "Fix secrets usage for EC2 auto deploy"
+git push origin main
+nano .github/workflows/deploy.yml
+git add .github/workflows/deploy.yml
+git commit -m "Fix YAML syntax (script indentation)"
+git push origin main
+nano .github/workflows/deploy.yml
+git add .github/workflows/deploy.yml
+git commit -m "Add working EC2 deploy workflow"
+git push origin main
+nano .github/workflows/deploy.yml
+git add .github/workflows/deploy.yml
+git commit -m "Test minimal EC2 connection"
+git push origin main
+nano .github/workflows/deploy.yml
+git add .github/workflows/deploy.yml
+git commit -m "Restore full deploy logic"
+git push origin main
+exit
