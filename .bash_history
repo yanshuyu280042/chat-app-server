@@ -154,3 +154,76 @@ ssh -i mykey.pem ec2-user@18.218.214.244
 exit
 ssh -i mykey.pem ec2-user@18.218.214.244
 exit
+ssh-keygen -t ed25519 -C "yanshuyu280042@gmail.com"
+cat ~/.ssh/id_ed25519.pub
+ssh -T git@github.com
+git push -u origin main
+git remote -v
+git push -u origin main
+git pull --rebase origin main
+git push -u origin main
+git add .
+git commit -m "Save local work before pulling remote"
+git pull --rebase origin main
+git push -u origin main
+chmod 600 ~/.ssh/id_ed25519
+git push -u origin main
+~ $ git push -u origin main
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+Permissions 0644 for '/home/cloudshell-user/.ssh/id_ed25519' are too open.
+It is required that your private key files are NOT accessible by others.
+This private key will be ignored.
+Load key "/home/cloudshell-user/.ssh/id_ed25519": bad permissions
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+Please make sure you have the correct access rights
+and the repository exists.
+~ $ chmod 600 ~/.ssh/id_ed25519
+~ $ git push -u origin main
+Enumerating objects: 29, done.
+Counting objects: 100% (29/29), done.
+Delta compression using up to 2 threads
+Compressing objects: 100% (25/25), done.
+Writing objects: 100% (28/28), 6.48 KiB | 170.00 KiB/s, done.
+Total 28 (delta 6), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (6/6), done.
+remote: error: GH013: Repository rule violations found for refs/heads/main.
+remote: 
+remote: - GITHUB PUSH PROTECTION
+remote:   —————————————————————————————————————————
+remote:     Resolve the following violations before pushing again
+remote: 
+remote:     - Push cannot contain secrets
+remote: 
+remote:     
+remote:      (?) Learn how to resolve a blocked push
+remote:      https://docs.github.com/code-security/secret-scanning/working-with-secret-scanning-and-push-protection/working-with-push-protection-from-the-command-line#resolving-a-blocked-push
+remote:     
+remote:       —— GitHub SSH Private Key ————————————————————————————
+remote:        locations:
+remote:          - commit: ee8dc6a870271ddef0bad04d6e8ab22ba4b7e1fd
+remote:            path: .ssh/id_ed25519:1
+remote:     
+remote:        (?) To push, remove secret from commit(s) or follow this URL to allow the secret.
+remote:        https://github.com/yanshuyu280042/chat-app-server/security/secret-scanning/unblock-secret/2y1TtQUCj8CxWLt187vVKld26ao
+remote:     
+remote: 
+To github.com:yanshuyu280042/chat-app-server.git
+ ! [remote rejected] main -> main (push declined due to repository rule violations)
+error: failed to push some refs to 'github.com:yanshuyu280042/chat-app-server.git'
+~ $ echo ".ssh/id_ed25519" >> .gitignore
+git add .gitignore
+git commit -m "Remove private key and add to .gitignore"
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch .ssh/id_ed25519" --prune-empty --tag-name-filter cat -- --all
+git push -u origin main --force
+# 1. 备份旧私钥（可选）
+mv ~/.ssh/id_ed25519 ~/.ssh/id_ed25519_old
+mv ~/.ssh/id_ed25519.pub ~/.ssh/id_ed25519.pub_old
+# 2. 创建新密钥
+ssh-keygen -t ed25519 -C "yanshuyu280042@gmail.com"
+cat ~/.ssh/id_ed25519.pub
+ssh -T git@github.com
+git push -u origin main --force
+exit
