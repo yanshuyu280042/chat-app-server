@@ -25,3 +25,4 @@ cd chat-app-server
 
 # Trigger deployment
 Trigger deployment on 2025-06-08
+Trigger redeploy
