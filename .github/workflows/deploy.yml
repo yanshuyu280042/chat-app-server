@@ -13,8 +13,7 @@ jobs:
       - name: Debug Key Length
         env:
           EC2_KEY: ${{ secrets.EC2_KEY }}
-
-          run: echo "Key length: \${#EC2_KEY}"
+        run: echo "Key length: \${#EC2_KEY}"
 
       - name: Deploy to EC2 via SSH
         uses: appleboy/ssh-action@v1
