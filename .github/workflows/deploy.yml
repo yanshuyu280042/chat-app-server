@@ -11,9 +11,9 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Debug Key Length
-        run: echo "Key length: ${#EC2_KEY}"
         env:
           EC2_KEY: ${{ secrets.EC2_KEY }}
+        run: echo "Key length: ${#EC2_KEY}"
 
       - name: Deploy to EC2 via SSH
         uses: appleboy/ssh-action@v1
@@ -28,8 +28,7 @@ jobs:
             echo "Starting SSH connection"
             cd chat-app-server
             git pull origin main
-
             ./gradlew build -x test --info
-
             sudo systemctl restart chatapp
           debug: true
+
