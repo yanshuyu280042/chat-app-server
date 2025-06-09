@@ -1,34 +1,27 @@
-name: deploy
+
+name: Deploy to EC2
+
 on:
   push:
     branches:
       - main
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
 
-      - name: Debug Key Length
-        env:
-          EC2_KEY: ${{ secrets.EC2_KEY }}
-        run: echo "Key length: \${#EC2_KEY}"
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Deploy to EC2 via SSH
-        uses: appleboy/ssh-action@v1
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
-          port: 22
-          timeout: 60s
-          command_timeout: 15m
           script: |
-            echo "Starting SSH connection"
             cd chat-app-server
             git pull origin main
-            ./gradlew build -x test --info
+            ./gradlew clean build -x test --info
             sudo systemctl restart chatapp
-          debug: true
-
