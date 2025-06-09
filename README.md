@@ -24,3 +24,4 @@ git clone git@github.com:yanshuyu280042/chat-app-server.git
 cd chat-app-server
 
 # Trigger deployment
+Trigger deployment on 2025-06-08
