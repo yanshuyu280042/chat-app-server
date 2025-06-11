@@ -1,17 +1,20 @@
+
 name: deploy
 
 on:
   push:
     branches:
       - main
-  workflow_dispatch:  # 仍然保留手动触发
+  workflow_dispatch:
 
 
 
 
 
 
-  workflow_dispatch:  # 改为手动触发，防止崩溃
+
+
+
 
 jobs:
   deploy:
