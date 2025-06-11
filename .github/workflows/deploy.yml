@@ -30,15 +30,5 @@ jobs:
           key: ${{ secrets.EC2_KEY }}
           port: 22
           script: |
-<<<<<<< HEAD
             echo "Restarting Spring Boot service..."
             sudo systemctl restart chatapp
-=======
-            if [ ! -d "chat-app-server" ]; then
-              git clone https://github.com/yanshuyu280042/chat-app-server.git
-            fi
-            cd chat-app-server
-            git pull origin main
-            ./gradlew clean build -x test
->>>>>>> 876e016 (Final deploy: fix upload target path to match service)
-
