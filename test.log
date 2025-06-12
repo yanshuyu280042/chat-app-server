@@ -1,0 +1,9 @@
+Initialized native services in: /home/ec2-user/.gradle/native
+Initialized jansi services in: /home/ec2-user/.gradle/native
+Removing 0 daemon stop events from registry
+Starting a Gradle Daemon, 14 busy Daemons could not be reused, use --status for details
+Starting process 'Gradle build daemon'. Working directory: /home/ec2-user/.gradle/daemon/8.14.1 Command: /usr/lib/jvm/java-21-amazon-corretto.x86_64/bin/java --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.invoke=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.api=ALL-UNNAMED --add-exports=jdk.compiler/com.sun.tools.javac.util=ALL-UNNAMED --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.prefs/java.util.prefs=ALL-UNNAMED --add-opens=java.base/java.nio.charset=ALL-UNNAMED --add-opens=java.base/java.net=ALL-UNNAMED --add-opens=java.base/java.util.concurrent.atomic=ALL-UNNAMED --add-opens=java.xml/javax.xml.namespace=ALL-UNNAMED -XX:MaxMetaspaceSize=384m -XX:+HeapDumpOnOutOfMemoryError -Xms256m -Xmx512m -Dfile.encoding=UTF-8 -Duser.country -Duser.language=en -Duser.variant -cp /home/ec2-user/.gradle/wrapper/dists/gradle-8.14.1-bin/baw1sv0jfoi8rxs14qo3h49cs/gradle-8.14.1/lib/gradle-daemon-main-8.14.1.jar -javaagent:/home/ec2-user/.gradle/wrapper/dists/gradle-8.14.1-bin/baw1sv0jfoi8rxs14qo3h49cs/gradle-8.14.1/lib/agents/gradle-instrumentation-agent-8.14.1.jar org.gradle.launcher.daemon.bootstrap.GradleDaemon 8.14.1
+Successfully started process 'Gradle build daemon'
+An attempt to start the daemon took 2.486 secs.
+The client will now receive all logging from the daemon (pid: 2002). The daemon log file: /home/ec2-user/.gradle/daemon/8.14.1/daemon-2002.out.log
+Starting build in new daemon [memory: 494.9 MiB]
