@@ -10,12 +10,6 @@ java {
     }
 }
 
-
-
-
-
-
-
 group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '21'
@@ -46,3 +40,14 @@ jar {
     enabled = false
 }
          
+
+
+springBoot {
+    mainClass = 'com.example.demo.DemoApplication'
+}
+
+
+
+
+
+
