@@ -38,7 +38,8 @@ public class AuthControllerTest {
         when(userRepository.existsByEmail("test@example.com")).thenReturn(false);
         when(passwordEncoder.encode("password123")).thenReturn("encodedPass");
 
-        mockMvc.perform(post("/auth/register")
+mockMvc.perform(post("/api/auth/register")...
+
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(new ObjectMapper().writeValueAsString(request)))
                 .andExpect(status().isOk());
@@ -49,5 +50,58 @@ public class AuthControllerTest {
         System.out.println("Running sample test...");
         assert(2 == 1 + 1);
     }
+
+@Test
+public void testLoginSuccess() throws Exception {
+    Map<String, String> request = Map.of(
+        "email", "login@example.com",
+        "password", "password123"
+    );
+
+    User mockUser = new User();
+    mockUser.setEmail("login@example.com");
+    mockUser.setPassword("encodedPass");
+
+    when(userRepository.findByEmail("login@example.com"))
+        .thenReturn(Optional.of(mockUser));
+    when(passwordEncoder.matches("password123", "encodedPass"))
+        .thenReturn(true);
+
+    mockMvc.perform(post("/api/auth/login")
+            .contentType(MediaType.APPLICATION_JSON)
+            .content(new ObjectMapper().writeValueAsString(request)))
+        .andExpect(status().isOk());
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
